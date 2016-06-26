@@ -1,0 +1,90 @@
+
+<md-toolbar>
+   <div class="md-toolbar-tools">
+   <p><strong>ngClassifieds</strong></p>
+
+<md-button ng-click="openSidebar()">
+         <md-icon class="mdi mdi-plus-circle"></md-icon>
+         New Classified
+   </md-button></a>
+
+   <md-button ng-click="openFilter()">
+     <md-icon class="mdi mdi-magnify"></md-icon>
+          filter
+   </md-button>
+
+     </div>
+</md-toolbar>
+
+<ui-view></ui-view>
+
+
+<!--adding search functionality  -->
+<div class="filters" layout="row" layout-align="center center" ng-show="setFilter">
+ <div layout="row">
+    <md-input-container>
+       <label>Search</label>
+         <input type="text" ng-model="nameFilter">
+     </md-input-container>
+<!--this gives the implementation of the select menu  -->
+     <md-input-container>
+         <label>Category</label>
+         <md-select ng-model="category">
+            <md-option ng-repeat="category in categories" value={{category}}>
+              {{category}}
+            </md-option>
+         </md-select>
+
+      </md-input-container>
+
+      <md-input-container>
+      <md-button ng-click="closeFilter()" class="md-warn">
+           clear
+      </md-button>
+    </md-input-container>
+
+     </div>
+
+  </div>
+
+
+<!-- special directive provided by angular material to add content.Layout row means
+that the elements will be stacked horizontally and layout wrap causes
+content to go to the next line and not exceed the width of the page. -->
+<md-content class="md-padding" layout="row" layout-wrap >
+ <md-card flex="30" ng-repeat="item in classifiedInfo |filter:searchFilter|filter:category" class="doAnimate">
+    <img ng-src={{item.image}}>
+     <md-card-content>
+             <div class="classified-info">
+                <h2 class="md-title">{{item.title}}</h2>
+                <h3>{{item.price |currency}}</h3>
+                <p>{{item.description}}</p>
+                <p><strong>{{item.posted |date:'longDate'}}</strong></p>
+
+                <div ng-show="id===item.id && flag">
+                    <p>{{item.contact.name}}</p>
+                    <p>{{item.contact.phone}}</p>
+                    <p>{{item.contact.email}}</p>
+
+                </div>
+              <md-button class="md-button" ng-click="sendMessage()">Send message</md-button>
+             <md-button ng-click="showContact(item)">Contact</md-button>
+             <md-button ng-click="showAdmin(item)">Admin</md-button>
+             <md-button ng-click="viewDetails(item)">View Details</md-button>
+             <ui-view></ui-view>
+
+            <br/><br/>
+             <div ng-show="adminId===item.id && adminFlag">
+
+                    <md-button class="md-primary" ng-click="editItem(item)">Edit</md-button>
+                     <md-button class="md-warn" ng-click="deleteItem(item)">Delete</md-button>
+
+
+              </div>
+
+             </div>
+
+
+     </md-card-content>
+ </md-card>
+</md-content>

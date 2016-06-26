@@ -1,0 +1,28 @@
+
+.md-sidenav-left{
+  position:fixed;
+}
+.searchDiv{
+  width:30%;
+  margin:0 auto;
+}
+
+.doAnimate.ng-enter,.doAnimate.ng-move{
+  transition:0.4s all;
+  opacity:0;
+}
+.doAnimate.ng-enter.ng-enter-active, .doAnimate.ng-move.ng-move-active{
+  opacity:1;
+}
+.doAnimate.ng-leave{
+  animation:.4s fade_classified;
+}
+
+@keyframes fade_classified{
+  from:{opacity:1;}
+  to:{opacity:0;}
+
+}
+.backButton{
+  width:15px;
+}

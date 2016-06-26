@@ -1,0 +1,39 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+ md-is-open="this.sidenavOpen">
+
+    <md-toolbar class="md-theme-light">
+         <h1 class="md-toolbar-tools">Add/Edit Items</h1>
+    </md-toolbar>
+
+    <md-content layout-padding>
+           <form>
+               <md-input-container>
+                 <label for="testTitle">Title</label>
+                 <input type="text" id="testInput" ng-model="item.title" md-autofocus>
+                 </md-input-container>
+                    <md-input-container>
+                 <label for="testPrice">Price</label>
+                 <input type="text" id="testPrice" ng-model="item.price" md-autofocus>
+                  </md-input-container>
+                 <md-input-container>
+                 <label for="testDescription">Description</label>
+                 <input type="text" id="testDescription" ng-model="item.description" md-autofocus>
+
+               </md-input-container>
+
+                 <md-input-container>
+                   <label for="testImage">ImageLink</label>
+                   <input type="text" id="testImage" ng-model="item.image" md-autofocus>
+                 </md-input-container>
+
+                 <md-button ng-click="closeSidebar()" class="md-primary">
+                 Close
+                 </md-button>
+
+                 <md-button class="md-button" ng-click="addItem()">Add</md-button>
+                 <md-button class="md-button" ng-click="updateItem()">Update</md-button>
+
+
+           </form>
+</md-content>
+ </md-sidenav>
